@@ -1,0 +1,25 @@
+.homePage {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 100px;
+}
+
+.homePage__main {
+  width: 100%;
+  flex: 0.8;
+}
+
+.homePage__infobox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+}
+
+@media (max-width: 990px) {
+  .homePage__container {
+    flex-direction: column;
+  }
+} ;

@@ -1,0 +1,39 @@
+.table {
+  height: 100px;
+  overflow: scroll;
+  padding: 10px;
+  position: relative;
+}
+
+.table h3 {
+  color: #454545;
+}
+
+.table p {
+  color: gray;
+}
+
+.table tbody {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.table tr {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.table td {
+  padding: 0.5px;
+}
+
+.table tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.MuiCard-root {
+  overflow: hidden;
+  padding: 10px 0px !important;
+}

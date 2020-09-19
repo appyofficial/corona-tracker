@@ -3,6 +3,7 @@
   overflow: scroll;
   padding: 10px;
   position: relative;
+  margin: auto;
 }
 
 .table h3 {
@@ -27,6 +28,11 @@
 
 .table td {
   padding: 0.5px;
+  font-size: 14px;
+}
+
+.table td:last-child {
+  font-weight: bold;
 }
 
 .table tr:nth-of-type(odd) {

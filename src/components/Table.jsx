@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../styles/TableStyle.css";
 import { useDataLayerValue } from "../context/DataLayer";
 import globe from "../images/globe.png";
+import formatNumber from "../utils/formatNumber";
 
 export default function Table() {
   const [{ countries }] = useDataLayerValue();
   const [sortCountries, setSortCountries] = useState([]);
 
   useEffect(() => {
-    const sorted = countries.sort((a, b) => b.cases - a.cases);
+    const sorted = [...countries].sort((a, b) => b.cases - a.cases);
     setSortCountries(sorted);
   }, [countries]);
 
@@ -21,7 +22,7 @@ export default function Table() {
           alignItems: "center",
           paddingBottom: "10px",
           position: "sticky",
-          top: 0,
+          top: "-20px",
           backgroundColor: "white",
         }}
       >
@@ -36,7 +37,7 @@ export default function Table() {
         {sortCountries?.map(({ country, cases }, id) => (
           <tr key={id}>
             <td>{country}</td>
-            <td>{cases}</td>
+            <td>{formatNumber(cases)}</td>
           </tr>
         ))}
       </tbody>

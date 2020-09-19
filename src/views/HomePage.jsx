@@ -63,12 +63,6 @@ const HomePage = () => {
     <div className="homePage">
       <main className="homePage__main">
         <Heading country={country} countryData={countryData} flagSrc={flag} />
-        <Map
-          center={location}
-          zoom={country === "Worldwide" ? 3 : 4}
-          countries={countries}
-          casesType="cases"
-        />
         <div className="homePage__infobox">
           <InfoBox
             title="Infected"
@@ -83,17 +77,23 @@ const HomePage = () => {
           />
           <InfoBox title="Deaths" total={countryData.deaths} imgSrc={deaths} />
         </div>
+        <Map
+          center={location}
+          zoom={country === "Worldwide" ? 3 : 4}
+          countries={countries}
+          casesType="cases"
+        />
+        <div>
+          <h3>Global daily cases</h3>
+          <p>Last 120 days</p>
+          <LineGraph />
+        </div>
       </main>
       {/*Sidebar */}
       <div className="sidebar">
         <Card>
-          <CardContent style={{ height: "400px", overflow: "scroll" }}>
+          <CardContent style={{ height: "600px", overflow: "scroll" }}>
             <Table />
-          </CardContent>
-        </Card>
-        <Card style={{ marginTop: "20px" }}>
-          <CardContent>
-            <LineGraph />
           </CardContent>
         </Card>
       </div>

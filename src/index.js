@@ -5,13 +5,16 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import DataLayer from "./context/DataLayer";
 import reducer, { initialState } from "./context/reducer";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <DataLayer initialState={initialState} reducer={reducer}>
-      <App />
-    </DataLayer>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <DataLayer initialState={initialState} reducer={reducer}>
+        <App />
+      </DataLayer>
+    </React.StrictMode>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

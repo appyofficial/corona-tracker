@@ -52,15 +52,17 @@ const LineGraph = () => {
   const [{ history }] = useDataLayerValue();
 
   return (
-    <div>
+    <div style={{ margin: "20px 0px", width: "100%" }}>
       {history?.length > 0 && (
         <Line
+          height="400"
           data={{
             datasets: [
               {
                 backgroundColor: "rgba(204, 16, 52, 0.5)",
                 borderColor: "#CC1034",
                 data: history,
+                tension: 0.5,
               },
             ],
           }}

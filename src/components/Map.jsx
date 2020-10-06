@@ -3,13 +3,13 @@ import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import "../styles/MapStyles.css";
 import showDataOnMap from "../utils/showDataOnMap";
 
-function Map({ countries, casesType, center, zoom }) {
+function Map({ countries, casesType, center, zoom, width, height, maxZoom }) {
   return (
-    <div className="map">
+    <div className="map" style={{ width: width, height: height }}>
       <LeafletMap
         center={center}
         zoom={zoom}
-        maxZoom={zoom}
+        maxZoom={maxZoom}
         scrollWheelZoom={false}
       >
         <TileLayer

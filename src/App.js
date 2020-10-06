@@ -3,55 +3,37 @@ import Navbar from "./components/Navbar";
 import HomePage from "./views/HomePage";
 import "./App.css";
 import { useDataLayerValue } from "./context/DataLayer";
-import buildChartData from "./utils/buildChartData";
+import { getCountriesData, getCountryDetail, getSortList } from "./api";
+import { Switch, Route } from "react-router-dom";
+import ListPage from "./views/ListPage";
+import MapPage from "./views/MapPage";
 
 function App() {
   const [{ country }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
-    //GET COUNTRIES DATA
-    fetch("https://disease.sh/v3/covid-19/countries")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({
-          type: "SET_COUNTRIES",
-          countries: data,
-        })
-      );
-
-    //GET SELECTED COUNTRY DETAIL
-    const getCountryDetail = () => {
-      let url =
-        country === "Worldwide"
-          ? "https://disease.sh/v3/covid-19/all"
-          : `https://disease.sh/v3/covid-19/countries/${country}`;
-
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) =>
-          dispatch({ type: "SET_COUNTRY_DATA", countryData: data })
-        );
-    };
-    getCountryDetail();
-
-    //GET HISTORY OF CASES
-    const getHistory = async () => {
-      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
-        .then((res) => res.json())
-        .then((data) => {
-          dispatch({
-            type: "SET_HISTORY",
-            history: buildChartData(data, "cases"),
-          });
-        });
-    };
-    getHistory();
-  }, [country]);
+    //fetching countries
+    getCountriesData(dispatch);
+    //fetching countries details like cases etc
+    getCountryDetail(dispatch, country);
+    //getting sorted list based on the most coronavirus cases
+    getSortList(dispatch);
+  }, [country, dispatch]);
 
   return (
     <div className="App">
       <Navbar />
-      <HomePage />
+      <Switch>
+        <Route exact path="/map">
+          <MapPage />
+        </Route>
+        <Route exact path="/list">
+          <ListPage />
+        </Route>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+      </Switch>
     </div>
   );
 }

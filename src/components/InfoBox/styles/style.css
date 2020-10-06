@@ -1,23 +1,27 @@
-.infoBox__container {
-}
-
 .infobox {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   padding: 10px 10px;
-  margin: 0px 20px;
+  margin: 20px 20px;
+  border-radius: 10px;
+  position: relative;
 }
 
 .infobox__img {
-  padding: 10px;
   border-radius: 10px;
   margin-right: 5px;
 }
 
+.infobox__detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .infobox__detail > p {
-  color: gray;
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 5px;
@@ -25,5 +29,5 @@
 
 .infobox__detail > h2 {
   color: #454545;
-  font-size: 22px;
+  font-size: 18px;
 }

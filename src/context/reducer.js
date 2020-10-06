@@ -5,9 +5,7 @@ export const initialState = {
   history: {},
   location: { lat: 34.80746, lng: -40.4796 },
   mapCountries: [],
-  //remove token after done
-  //token:
-  //"BQACPfV0TyRs55HDi7An5McMuHyKvw7ttqG08FxpX0Lb_8eVorXmAV8TeFgrF-IMfuDao8WT79aJ66gP7g4Teos0Wno0l35iahu1EKSL9IAeU5AqQEUqvAoE4WgJagTq5nTKw1xSd576jMW-u0JjjqmLCEYEEkw895sIsQ",
+  sortCountries: [],
 };
 
 const reducer = (state, action) => {
@@ -25,6 +23,8 @@ const reducer = (state, action) => {
       return { ...state, location: action.location };
     case "SET_MAP_COUNTRIES":
       return { ...state, mapCountries: action.mapCountries };
+    case "SET_SORT_COUNTRIES":
+      return { ...state, sortCountries: action.sortCountries };
     default:
       return { ...state };
   }

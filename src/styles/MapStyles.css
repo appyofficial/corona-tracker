@@ -1,11 +1,3 @@
-.map {
-  height: 300px;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 20px;
-  margin-top: 30px;
-}
-
 .map .leaflet-container {
   height: 100%;
   border-radius: 12px;
